@@ -1,0 +1,149 @@
+
+@baseurl = http://127.0.0.1:8000/api/v1/professional
+@token  = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTczNzA1NDQ3ZmE5MWJmM2UzNDg5NzhhNjlhNGY2ZTBjMGJkN2E3ZjVjMWU5YjNkODA1NzZjZjVkZjY2MTIwYjM5NDkzYmNjNmQ2MjMxMWEiLCJpYXQiOjE2NTA5OTg2MjAuMzc2OTc2LCJuYmYiOjE2NTA5OTg2MjAuMzc2OTgsImV4cCI6MTY4MjUzNDYyMC4zNzQ4MDcsInN1YiI6IjMiLCJzY29wZXMiOlsiY3VzdG9tZXIiXX0.QxgovRt1jFPalh3sHmNyQ7bFmvYSokuOWDBi_sWjQH0pqW49kxyP7mRh3LnLdMKpyMGEaXwLKFWNIQfzk2yTEkTSGjHpACUUZbt5VYktBFUNJQ-naiTYTOn7TnFAEW3JEQhoE4Dtpy0Pr7nGaphx0C30uVbBXEjV5e4JW2YHgwUg6mQwGjrxtlEytxwYEg55O8XKXCLZPkFRA7HxZAEEYodaQu6bWFcqWNJsHyF2HbtVgPqJBV8WGsQyUqqF_J3Jez9uuoCxojNo5lsQ45Sj5ak1RH9T4chf9hKGLixVEyVmwyCyqrbASpaZ0FKdAA7cv7ahA9ciJV0qJ6MkNXZy48u2nMwaR9DbCQDA06iSy26A6PBSL58jIpqzt_hatjPssRe-9BzCnx6qcXXw7H8n_xL0YhjtYl8EH_Uvjf5_5-QHRCqX0WJYirs_a_LjDmmPCP-3dzz83FPTllzTIR0wxXDfn_s0eb1LFao-UYHLVIt3MLXGy2TczN6akbL9CF4Rlo6_FEmeB_BzHjo1UIx2E6cEPrTQFaySZjj5gu8qg0SAOiI391lOzkntJ0lzZaL_9MnYwM2hlmI4n-9dz0XTmkifVRQ2mGmjAwU4bGMh1LTIyFvN2rlRC75QbzvFgZsPI1PouawXGep3EArG29VUK2KS0T6k29hWRkpsKJvfwSw
+
+
+//@baseurl = https://admin.edfish.in/api
+//@token  = "d2b7beea-bac6-4bd4-b8d1-e19e7533408e98uh"
+
+@phone = "7845068950"
+@sessionid = "f61ab22e-339f-472f-a392-ca8045f4bf5b"
+
+
+### 1) CUSTOMER PHONE LOGIN
+
+POST {{baseurl}}/professionalphonelogin
+content-type: application/json
+
+{
+    "phone": {{phone}}
+}
+
+
+### 2) CUSTOMER RESEND OTP
+
+POST {{baseurl}}/professionalresendotp
+content-type: application/json
+
+{
+    "phone": {{phone}},
+    "sessionid": {{sessionid}}
+}
+
+
+### 3) CUSTOMER OTP LOGIN
+
+POST {{baseurl}}/professionalotplogin
+content-type: application/json
+
+{
+    "phone": {{phone}},
+    "otp": "380975",
+    "sessionid": {{sessionid}}
+}
+
+
+### 4) CUSTOMER SIGNUPFORM
+
+POST {{baseurl}}/signupform
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Mukhilan-ignore",
+    "email": "e.mukhilan23@gmail.com",
+    "dob": "1999-02-23"
+}
+
+
+### 5) POST CUSTOMER latandlngupdate
+
+POST {{baseurl}}/latandlngupdate
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "latitude": 13.018909571006423, 
+    "longitude": 80.20239911038237,
+    "addresstype": 1,
+    "doornumber": "test",
+    "landmark": "test",
+    "address_lineone": "test"
+}
+
+
+### 6) GET CUSTOMER LOGOUT
+
+GET {{baseurl}}/logout
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 7) SAVE CUSTOMER DEVICE TOKEN
+
+POST {{baseurl}}/professionalsavedeviceinfo
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "device_token": "two",
+    "device_model": "two",
+    "device_brand": "two",
+    "device_manufacturer": "two"
+}
+
+### 8) GET CUSTOMER PROFILE
+
+GET {{baseurl}}/getprofessionalprofile
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 9) EDIT CUSTOMER PROFILE
+
+POST {{baseurl}}/updateprofessionalprofile
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Mukhilan CM Customer",
+    "phone": "7395944078",
+    "email": "e.mukhilan23@gmail.com",
+    "dob": "1999-02-23",
+    "refcode": "00000014"
+}
+
+### 10) GET CUSTOMER TERMS AND CONDITION
+
+GET {{baseurl}}/professionaltermsandcondition
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 11) GET CUSTOMER FAQ
+
+GET {{baseurl}}/professionalfaq
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+
+### 12) GET CUSTOMER CONTACT US
+
+GET {{baseurl}}/professionalcontactus
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
+
+### 13) GET CUSTOMER HOMEPAGE
+
+GET {{baseurl}}/professionalhomepage
+content-type: application/json
+Accept: Application/json
+Authorization: Bearer {{token}}
